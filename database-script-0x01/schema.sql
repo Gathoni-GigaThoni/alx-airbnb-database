@@ -228,11 +228,6 @@ CREATE TABLE reviews (
         FOREIGN KEY (reviewer_id) 
         REFERENCES users(user_id)
         ON DELETE CASCADE,
-    
-    -- Business logic
-    CONSTRAINT chk_review_timing CHECK (
-        created_at >= (SELECT check_in_date FROM bookings WHERE booking_id = reviews.booking_id)
-    )
 );
 
 -- =============================================================================
